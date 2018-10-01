@@ -1,0 +1,111 @@
+<p-breadcrumb [model]="breadcrumbItens" [home]="home"></p-breadcrumb>
+
+<p-toast [style]="{marginTop: '40px'}"></p-toast>
+
+<form [formGroup]="form" (ngSubmit)="salvar()" style="margin-top:15px;">
+	<p-panel header="Cadastro de Item">
+		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Nome *:
+				</div>
+				<div class="ui-grid-col-6">
+					<input type="text" formControlName="nome" placeholder="Nome" pInputText/>
+				</div>
+				<div class="ui-grid-col-4">
+					<div *ngIf="(nomeCtrl.invalid && (nomeCtrl.dirty || nomeCtrl.touched))  || valid" class="alert-msg">
+						<p-message severity="error" text="É necessário preencher o nome." *ngIf="nomeCtrl.errors && nomeCtrl.errors.required"></p-message>
+						<p-message severity="error" text="O nome deve conter menos que 50 caracteres." *ngIf="nomeCtrl.errors && nomeCtrl.errors.maxlength"></p-message>
+						<p-message severity="error" text="O nome deve possuir somente letras." *ngIf="nomeCtrl.errors && nomeCtrl.errors.caractere"></p-message>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Unidade de medida:
+				</div>
+				<div class="ui-grid-col-6 ui-inputgroup">
+					<p-dropdown [options]="enumList" formControlName="unidadeMedida"></p-dropdown>
+					<span class="ui-inputgroup-addon">{{form['controls'].unidadeMedida.value}}</span>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Quantidade *:
+				</div>
+				<div class="ui-grid-col-6">
+					<input type="text" pInputText formControlName="quantidade" (focus)="this.validateForm()" />
+				</div>
+				<div class="ui-grid-col-4">
+					<div *ngIf="(quantidadeCtrl.invalid && (quantidadeCtrl.dirty || quantidadeCtrl.touched)) || valid" class="alert-msg">
+						<p-message severity="error" [text]="quantidadeCtrl.errors.quantidade" *ngIf="quantidadeCtrl.errors && quantidadeCtrl.errors.quantidade"></p-message>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Preço:
+				</div>
+				<div class="ui-grid-col-6">
+					<input currencyMask formControlName="preco" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" placeholder="Preço"
+					/>
+				</div>
+				<div class="ui-grid-col-4">
+					<div *ngIf="(form.controls['preco'].invalid &&(form.controls['preco'].invalid || form.controls['preco'].touched)) || valid" class="alert-msg">
+						<p-message severity="error" text="É necessário informar o campo preço." *ngIf="form.controls['preco'].errors && form.controls['preco'].errors.required"></p-message>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Produto Perecível :
+				</div>
+				<div class="ui-grid-col-6">
+					<p-checkbox placeholder="Produto Perecível" formControlName="perecivel" binary="true"></p-checkbox>
+				</div>
+				<div class="ui-grid-col-4"></div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Data de Validade *:
+				</div>
+				<div class="ui-grid-col-6">
+					<p-calendar placeholder="Data de Validade" formControlName="dataValidade" dateFormat="dd/mm/yy"></p-calendar>
+				</div>
+				<div class="ui-grid-col-4">
+					<div *ngIf="(dataValidadeCtrl.invalid &&(dataValidadeCtrl.invalid || dataValidadeCtrl.touched)) || valid" class="alert-msg">
+						<p-message severity="error" text="A data de validade não pode ser menor que a data atual - Item já se encontra vencido." *ngIf="dataValidadeCtrl.errors && dataValidadeCtrl.errors.dataValidade"></p-message>
+						<p-message severity="error" text="É necessário informar o campo data de validade." *ngIf="dataValidadeCtrl.errors && dataValidadeCtrl.errors.required"></p-message>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2">
+					Data de Fabricação *:
+				</div>
+				<div class="ui-grid-col-6">
+					<p-calendar placeholder="Data de Fabricação" formControlName="dataFabricacao" dateFormat="dd/mm/yy"></p-calendar>
+				</div>
+				<div class="ui-grid-col-4">
+					<div *ngIf="(dataFabricacaoCtrl.invalid && (dataFabricacaoCtrl.dirty || dataFabricacaoCtrl.touched)) || valid" class="alert-msg">
+						<p-message severity="error" text="A data de fabricação não pode ser maior que a data de validade." *ngIf="dataFabricacaoCtrl.errors && dataFabricacaoCtrl.errors.dataFabricacao && form['controls'].perecivel.value"></p-message>
+						<p-message severity="error" text="É necessário informar o campo data de fabricação." *ngIf="dataFabricacaoCtrl.errors && dataFabricacaoCtrl.errors.required"></p-message>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-2"></div>
+				<div class="ui-grid-col-3">
+					<button pButton type="submit" label="Salvar" (onClick)="salvar(item)"></button>
+				</div>
+				<div class="ui-grid-col-3">
+					<button pButton type="submit" label="Cancelar" [routerLink]="['/itens']"></button>
+				</div>
+			</div>
+			<div style="text-align:center;margin-top:20px" *ngIf="submitted">
+				Form Submitted
+				<br> {{diagnostic}}
+			</div>
+		</div>
+	</p-panel>
+</form>

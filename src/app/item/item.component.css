@@ -1,0 +1,9 @@
+.alert-msg{
+    color:#821212;
+    font-size:13px;
+    padding-top: 5px;
+}
+
+.alert{
+    border:1px solid #d40e0e;
+}

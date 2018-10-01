@@ -1,0 +1,53 @@
+.vertical-menu {
+    width: 70px;
+    height: 100%;
+    position: fixed;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d0c3f+0,41004f+100 */
+    background: #2d0c3f; /* Old browsers */
+    background: -moz-linear-gradient(left, #0e0d0e 0%,#1a171b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #0e0d0e 0%,#1a171b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #0e0d0e 0%,#1a171b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d0119', endColorstr='#32043c',GradientType=1 ); /* IE6-9 */
+
+}
+
+.vertical-menu li{
+    padding:10px;
+    border-top: 1px solid #272727;
+}
+
+.vertical-menu > nav a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: rgb(74, 15, 88);
+    margin:0 auto;
+    border-radius: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    color:white;
+    font-size: 20px;
+    border: 1px solid #640b79;
+}
+
+.vertical-menu a:hover {
+    -moz-box-shadow:    inset 0 0 15px #000000;
+    -webkit-box-shadow: inset 0 0 15px #000000;
+    box-shadow:         inset 0 0 15px #000000;
+    background-color: rgb(95, 19, 85); /* Dark grey background on mouse-over */
+}
+
+#container{
+    display:inline-block;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+
+div.title>h2{
+    color:#696969;
+    padding: 10px;
+    border-bottom: 1px solid #dadada;
+}

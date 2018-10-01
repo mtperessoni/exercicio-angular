@@ -1,0 +1,12 @@
+.list-itens{
+    padding: 10px;
+}
+
+div.list-itens>div.title>h2{
+    text-align: center;
+}
+
+
+.grid-button > button{
+    margin-left: 5px;
+}
