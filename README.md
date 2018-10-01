@@ -1,5 +1,7 @@
-﻿Projeto criado com base no exercício: https://drive.google.com/open?id=1D8S5taqMHg26fmQQdr20fE9dyPTl7L4N.
+Projeto criado com base no exercício: https://drive.google.com/open?id=1D8S5taqMHg26fmQQdr20fE9dyPTl7L4N.
+
 CRUD criada com base em alguns conceitos básicos do Angular como: Services, Validators, Componentes, Modulos, Testes unitários com Jasmine, etc..
+
 Para rodar o projeto, é necessário que possua o Node e o Angular CLI instalado.
 É possível instalar o Angular CLI através do comando: npm install -g @angular/cli
 
